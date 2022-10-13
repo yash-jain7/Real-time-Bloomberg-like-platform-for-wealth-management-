@@ -16,8 +16,8 @@ import tweepy
 
 def get_company_tweet(company_name):
     # Define your keys from the twitter developer portal
-    client_key = 'lmvg6lK99GL1OjEMzFXan443b'
-    client_secret = 'yxfydXalJbcAjRH2b3JRomsgSbSOpzdXEdjiMAnz43ZSOeRuGA'
+    client_key = ''
+    client_secret = ''
 
 
 
