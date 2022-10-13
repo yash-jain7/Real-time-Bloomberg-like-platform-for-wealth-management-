@@ -96,8 +96,8 @@ def deliver_stream(data):
     # client = boto3.client("firehose", region_name="us-east-1")
     client = boto3.client('firehose',
                           region_name='us-east-1',
-                          aws_access_key_id='',
-                          aws_secret_access_key=''
+                          aws_access_key_id='AKIAXSVLMCHA6NOMDOO7',
+                          aws_secret_access_key='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'
                           )
 
     client.put_record_batch(
