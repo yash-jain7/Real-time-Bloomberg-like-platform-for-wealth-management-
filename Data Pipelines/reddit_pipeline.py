@@ -31,3 +31,38 @@ def get_reddit_comment(company_name):
                   text_comment]
 
     return text_comment
+
+
+
+def deliver_stream(data):
+    # client = boto3.client("firehose", region_name="us-east-1")
+    client = boto3.client('firehose',
+                          region_name='us-east-1',
+                          aws_access_key_id='',
+                          aws_secret_access_key=''
+                          )
+
+    client.put_record_batch(
+                DeliveryStreamName="reddit_data",
+                Records=data,
+            )
+
+
+
+def lambda_handler(event, context):
+
+
+    company_name = ['AAPL','TSLA','GOOGL','FB','AMZN','NFLX','MSFT','UBER','TCEHY','BABA', 'TWTR']
+    for c in company_name:
+        submission = get_reddit_submission(c)
+        deliver_stream(submission)
+        comment = get_reddit_comment(c)
+        deliver_stream(comment)
+
+
+
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps('success')
+    }
